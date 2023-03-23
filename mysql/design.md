@@ -26,11 +26,11 @@
 
 2. 方案二 使用 select.... for update 行锁
 - 优点
-  - 互斥
+  - 互斥, mysql内部排他锁
   - 过期时间，如果client断连(网络/机器故障), mysql会自动释放行锁
-  - mysql内部会唤醒等待client, 不会占用cpu，避免惊群
-  - 可重入-mysql内部行锁支持；可以在事物里重复执行 select ... for update 
-  - 公平-mysql内部行锁支持
+  - 抢锁失败线程会被挂起wait，不会占用cpu，
+  - 可重入-mysql内部行锁支持; 可以在事物里重复执行 select ... for update 
+  - 公平-mysql内部行锁支持; mysql内部会唤醒等待client,避免惊群
 - 缺点
   - 如果网络断开，链接断开，事物丢失，for update 语句会时效
   - 需要提前插入到lock表一条记录

@@ -1,11 +1,5 @@
 package main
 
-import (
-	"context"
-	"fmt"
-	"github.com/codingWhat/ditributed-lock/mysql"
-)
-
 func main() {
 	//ctx := context.Background()
 	//
@@ -32,18 +26,27 @@ func main() {
 	//	_ = l.UnLock(ctx, "dsadas")
 	//}
 
-	l, _ := mysql.NewLockerV2()
+	//l, _ := mysql.NewLockerV2()
+	//
+	//ctx := context.Background()
+	//
+	//if err := l.Acquire(ctx, "aaas"); err != nil {
+	//	fmt.Println("acquire -->", err.Error())
+	//	return
+	//}
+	//fmt.Println("---->")
+	//// do business logic
+	//if err := l.Release(ctx); err != nil {
+	//	fmt.Println("release -->", err.Error())
+	//	return
+	//}
 
-	ctx := context.Background()
+	//ctx := context.Background()
+	//l, err := redis.NewLocker()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//_ = l.Lock(ctx, "dsadas", 10)
 
-	if err := l.Acquire(ctx, "aaas"); err != nil {
-		fmt.Println("acquire -->", err.Error())
-		return
-	}
-	fmt.Println("---->")
-	// do business logic
-	if err := l.Release(ctx); err != nil {
-		fmt.Println("release -->", err.Error())
-		return
-	}
 }
